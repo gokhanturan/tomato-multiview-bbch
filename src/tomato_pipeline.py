@@ -428,7 +428,14 @@ def restore_images(cfg: Config):
         return
     for t in sorted(d["shards"].glob("shard_*.tar")):
         with tarfile.open(t) as tf:
-            tf.extractall(img)
+            # Güvenli çıkarma: arşiv dışı yollara yazmayı engeller
+            try:
+                tf.extractall(img, filter="data")
+            except TypeError:      # Python < 3.12
+                for m in tf.getmembers():
+                    if m.name.startswith(("/", "..")) or "/" in m.name:
+                        raise RuntimeError(f"Güvensiz arşiv girdisi: {m.name}")
+                tf.extractall(img)
     missing = set(sub.image_id) - {p.stem for p in img.glob("*.jpg")}
     if missing:
         raise RuntimeError(f"{len(missing)} görüntü eksik; stage_images'ı yeniden çalıştırın.")
@@ -795,7 +802,15 @@ def stage_analysis(cfg: Config):
     T = d["tables"]
     tables: dict[str, pd.DataFrame] = {}
     man = _read(d["manifests"] / "selection_manifest.csv")
-    full = _read(d["cache"] / "metadata_full.csv")
+    full_p = d["cache"] / "metadata_full.csv"
+    if full_p.exists():
+        full = _read(full_p)
+    else:
+        # Depoyu yeni indiren biri için: tam üst veri yoksa BBCH kod listeleri ve
+        # sınıf dağılımı alt küme manifestinden türetilir; tam veri sütunu boş bırakılır.
+        LOG.warning("metadata_full.csv yok; T1 tablosu alt küme manifestinden üretiliyor.")
+        full = man[["bbch", "cls"]].copy()
+        full["image_id"] = np.arange(len(full))
 
     # ---- T1 veri seti ve sınıf eşlemesi
     t1 = []
@@ -804,10 +819,11 @@ def stage_analysis(cfg: Config):
         t1.append(dict(sinif=CLASS_SHORT[c], evre=CLASS_LABELS_TR[c],
                        bbch_kodlari=", ".join(map(str, sorted(qf.bbch.unique()))),
                        bitki=q.plant.nunique(), oturum=len(q), altkume_goruntu=len(q) * len(cfg.cameras),
-                       tam_veri_goruntu=len(qf)))
+                       tam_veri_goruntu=(len(qf) * len(cfg.cameras) * 12 if not full_p.exists() else len(qf))))
     t1 = pd.DataFrame(t1)
     t1.loc[len(t1)] = dict(sinif="Toplam", evre="", bbch_kodlari="", bitki=man.plant.nunique(), oturum=len(man),
-                           altkume_goruntu=len(man) * len(cfg.cameras), tam_veri_goruntu=len(full))
+                           altkume_goruntu=len(man) * len(cfg.cameras),
+                           tam_veri_goruntu=int(t1["tam_veri_goruntu"].sum()))
     tables["T1_dataset"] = t1
     if (T / "T2_folds.csv").exists():
         tables["T2_folds"] = _read(T / "T2_folds.csv")
