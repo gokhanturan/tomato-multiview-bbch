@@ -12,3 +12,4 @@ onnxruntime==1.30.0
 openpyxl
 matplotlib
 pillow
+opencv-python-headless
