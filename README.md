@@ -49,7 +49,7 @@ results/oof/                  Kamera başına kat-dışı tahminler ve füzyon �
 results/SUMMARY_FOR_MANUSCRIPT.json   Bütün sayısal sonuçların tek dosyada özeti
 training_curves/              40 eğitim koşusunun epok bazında kayıtları
 logs/                         Çalıştırma günlüğü, yapılandırma ve ortam bilgisi
-docs/                         Çalışmanın tasarım dokümanı
+docs/                         Çalışma tasarımı ve pipeline aşamaları belgeleri
 ```
 
 ## Yeniden üretme
@@ -58,11 +58,28 @@ docs/                         Çalışmanın tasarım dokümanı
 2. `src/tomato_pipeline.py` dosyasını Drive'daki `YOLODomatesEylul2026/code/` klasörüne koyun.
 3. Hücreleri sırayla çalıştırın. Aşamalar kaldığı yerden devam eder; tamamlanan işler atlanır.
 
-Veri, Hugging Face'teki `Voxel51/tomato-map` aynasından indirilir (yalnızca seçilen ~5.400 dosya).
-İndirme hız sınırlarına takılmamak için Colab Secrets içine `HF_TOKEN` eklemeniz önerilir.
+Veri, Hugging Face'teki `Voxel51/tomato-map` aynasından indirilir; normal koşulda yalnızca
+seçilen ~5.400 dosya çekilir. Seçmeli indirme başarısız olursa pipeline, `allow_full_download`
+ayarı açıkken tüm veri setini (~49 GB) indirmeye geçer. İndirme hız sınırlarına takılmamak için
+Colab Secrets içine `HF_TOKEN` eklemeniz önerilir.
 
-Analiz aşaması GPU gerektirmez: `results/oof/` altındaki tahmin dosyaları depoda olduğu için
-bütün tablolar ve şekiller eğitim yapılmadan yeniden üretilebilir.
+**Yeniden üretim kapsamı.** `results/oof/` altındaki kat-dışı tahminler depoda olduğu için
+sayısal tabloların tamamı ve bu tahminlerden üretilen istatistiksel şekiller (makro F1
+karşılaştırmaları, karışıklık matrisleri, kamera çifti farkları, maliyet–başarım grafiği)
+GPU olmadan, yalnızca depodaki dosyalarla yeniden üretilebilir:
+
+```python
+import tomato_pipeline as tp
+cfg = tp.Config(drive_root='<deponun yolu>')
+tp.setup(cfg); tp.stage_analysis(cfg)
+```
+
+Örnek görüntü içeren şekiller (evre örnekleri ve bir oturumun dört görünümü) kaynak görüntülere
+bağlı olduğundan, bunların üretilmesi için TomatoMAP görüntülerinin indirilmesi gerekir.
+Eğitilmiş kontrol noktaları (.pt) boyutları nedeniyle depoda paylaşılmamaktadır; koşu düzeyindeki
+`args.yaml` dosyalarıyla birlikte talep üzerine iletilir. Depoda eğitim yapılandırması
+(`logs/config.json`), ortam kaydı (`logs/environment.json`) ve 40 koşunun epok bazındaki
+eğitim eğrileri bulunur.
 
 ## Tasarım kararları
 
