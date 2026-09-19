@@ -4,9 +4,9 @@ Kamera görüşü, geç füzyon ve hesaplama maliyetinin, **TomatoMAP** veri set
 bitki düzeyinde gruplanmış çapraz doğrulama ile incelendiği çalışmanın kodu, manifestleri
 ve sonuç dosyaları.
 
-> **Makale:** Turan, G. (2026). *Çok görünümlü domates görüntülerinde derin öğrenme tabanlı
-> büyüme evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti.*
-> International Journal of Engineering Design and Technology (IJEDT). (değerlendirme aşamasında)
+> **İlgili çalışma:** Turan, G. (2026). *Çok görünümlü domates görüntülerinde derin öğrenme
+> tabanlı büyüme evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti.*
+> Yayımlanmamış çalışma.
 
 ---
 
@@ -88,15 +88,15 @@ bütün tablolar ve şekiller eğitim yapılmadan yeniden üretilebilir.
 
 ## Atıf
 
-Makale yayımlandığında künyesi buraya eklenecektir. Şimdilik:
+Bu depoya atıf yapmak için:
 
 ```bibtex
-@misc{turan2026tomatomap,
+@misc{turan2026multiviewbbch,
   author = {Turan, Gökhan},
   title  = {Çok görünümlü domates görüntülerinde derin öğrenme tabanlı büyüme evresi
             sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti},
   year   = {2026},
   note   = {Kod ve sonuç deposu},
-  url    = {https://github.com/<kullanici>/<depo>}
+  url    = {https://github.com/gokhanturan/tomato-multiview-bbch}
 }
 ```
