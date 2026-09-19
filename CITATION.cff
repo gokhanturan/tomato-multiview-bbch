@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Bu depoyu kullanırsanız aşağıdaki gibi atıf yapınız."
+title: "Çok görünümlü domates görüntülerinde derin öğrenme tabanlı büyüme evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti"
+authors:
+  - family-names: Turan
+    given-names: Gökhan
+    orcid: "https://orcid.org/0000-0002-9698-8986"
+    affiliation: "Burdur Mehmet Akif Ersoy Üniversitesi, Teknik Bilimler Meslek Yüksekokulu, Bilgisayar Teknolojileri Bölümü"
+    email: gokhanturan@mehmetakif.edu.tr
+date-released: 2026-09-18
+version: "1.0.0"
+license: MIT
+keywords:
+  - deep learning
+  - image classification
+  - multi-view learning
+  - late fusion
+  - model evaluation
+  - BBCH

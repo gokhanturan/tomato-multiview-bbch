@@ -1,0 +1,14 @@
+# Sonuçların üretildiği ortam: Google Colab Pro+, NVIDIA A100-SXM4-40GB
+ultralytics==8.4.155
+torch==2.11.0
+torchvision==0.26.0
+scikit-learn==1.9.1
+numpy==2.1.3
+pandas==2.2.3
+huggingface_hub>=1.32.0
+onnx
+onnxslim
+onnxruntime==1.30.0
+openpyxl
+matplotlib
+pillow
