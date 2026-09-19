@@ -1,0 +1,13 @@
+{
+  "time": "2026-09-18 09:26:22",
+  "ultralytics": "8.4.155",
+  "torch": "2.11.0+cu128",
+  "torchvision": "0.26.0+cu128",
+  "sklearn": "1.9.1",
+  "huggingface_hub": "1.32.0",
+  "onnxruntime": "1.30.0",
+  "numpy": "2.1.3",
+  "pandas": "2.2.3",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "cpu": "Model name:                              Intel(R) Xeon(R) CPU @ 2.20GHz"
+}

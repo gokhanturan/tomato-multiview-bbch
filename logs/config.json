@@ -1,0 +1,38 @@
+{
+  "drive_root": "/content/drive/MyDrive/YOLODomatesEylul2026",
+  "local_root": "/content/work",
+  "hf_repo": "Voxel51/tomato-map",
+  "cameras": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "camera_labels": {
+    "1": "K1",
+    "2": "K2",
+    "3": "K3",
+    "4": "K4"
+  },
+  "pose_seed": 2026,
+  "fold_seed": 2026,
+  "n_folds": 5,
+  "train_seed": 0,
+  "models": [
+    "yolo11n-cls.pt",
+    "yolo26n-cls.pt"
+  ],
+  "prep_size": 384,
+  "imgsz": 320,
+  "epochs": 50,
+  "patience": 15,
+  "batch": 64,
+  "workers": 8,
+  "shard_size": 1000,
+  "download_workers": 16,
+  "allow_full_download": true,
+  "bootstrap_B": 2000,
+  "bootstrap_seed": 12345,
+  "latency_runs": 100,
+  "offline_src": null
+}
