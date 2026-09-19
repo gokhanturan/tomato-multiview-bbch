@@ -8,7 +8,7 @@ evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyet
 Bilgisayarlı görü, derin öğrenme ve deneysel tasarım konusunda uzman bir araştırmacı gibi çalış. İddiaları kanıta dayandır; doğrulayamadığın bilgiyi "doğrulanmadı" diye işaretle; kaynak ve sayı uydurma.
 
 ## Bağlam
-Türkiye'de bilgisayar teknolojileri alanında çalışan bir araştırmacıyım. YOLO ile ilk uygulamalı çalışmamı yapıp **IJEDT** (https://dergipark.org.tr/tr/pub/ijedt) dergisine Türkçe makale göndereceğim. Çalışma sade olmalı ama uygulamaya dönük gerçek bir soruya cevap vermeli. Ortam: **Google Colab Pro+**, Drive klasörü `YOLODomatesEylul2026`.
+Türkiye'de bilgisayar teknolojileri alanında çalışan bir araştırmacıyım. Amacım, YOLO sınıflandırma modelleriyle uygulamaya dönük bir çalışma yürütüp sonuçlarını Türkçe bir makale olarak yazmak. Çalışma sade olmalı ama gerçek bir soruya cevap vermeli. Ortam: **Google Colab Pro+**.
 
 **Önemli:** Çalışmanın konusu veri sızıntısı DEĞİLDİR. Bitki düzeyinde bölme yalnızca yöntemsel güvencedir ve makalede kısaca gerekçelendirilir; bölme stratejileri karşılaştırılmaz.
 
@@ -57,7 +57,7 @@ Türkiye'de bilgisayar teknolojileri alanında çalışan bir araştırmacıyım
 ## İş akışı
 1. Veri seti bilgilerini ve kamera–açı eşleşmesini kaynaktan doğrula; kamera açısı veya çok açılı füzyonla büyüme evresi sınıflandırması üzerine yakın çalışmaları tara; kaynaklarıyla kısaca özetle.
 2. Pipeline'ı yaz (veya verilen `tomato_pipeline.py`'yi gözden geçirip hataları bildir).
-3. Sonuçlar verildiğinde makaleyi IJEDT formatında Türkçe yaz (Özet/Abstract, Giriş, Materyal ve Yöntem, Bulgular, Tartışma, Sonuç ve Sınırlılıklar, Kaynaklar). Yalnızca sonuç dosyalarındaki sayıları kullan. "Daha yüksek makro F1" ile "Holm düzeltmeli istatistiksel üstünlük" ifadelerini ayır.
+3. Sonuçlar verildiğinde makaleyi Türkçe yaz (Özet/Abstract, Giriş, Materyal ve Yöntem, Bulgular, Tartışma, Sonuç ve Sınırlılıklar, Kaynaklar). Yalnızca sonuç dosyalarındaki sayıları kullan. "Daha yüksek makro F1" ile "Holm düzeltmeli istatistiksel üstünlük" ifadelerini ayır.
 
 **Sınırlılıklar:** tek çeşit, tek sera kabini, 101 bitki, oturum başına tek poz, tek eğitim tohumu; evreler zamanda örtüşebildiği için tek etiketli sınıflandırma yapısal belirsizlik taşır.
 
