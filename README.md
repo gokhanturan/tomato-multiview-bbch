@@ -1,10 +1,11 @@
-# Derin Öğrenme ile Domates Büyüme Evresi Sınıflandırması: Kamera Görüşlerinin ve Geç Füzyonun Etkisi
+# Derin öğrenme ile domates büyüme evresi sınıflandırması: kamera görüşlerinin ve geç füzyonun etkisi
 
 Kamera görüşü, geç füzyon ve hesaplama maliyetinin, **TomatoMAP** veri seti üzerinde
 bitki düzeyinde gruplanmış çapraz doğrulama ile incelendiği çalışmanın kodu, manifestleri
 ve sonuç dosyaları.
 
-> **İlgili çalışma:** Turan, G. (2026). *Derin Öğrenme ile Domates Büyüme Evresi Sınıflandırması: Kamera Görüşlerinin ve Geç Füzyonun Etkisi*
+> **İlgili çalışma:** Turan, G. (2026). *Derin öğrenme ile domates büyüme evresi
+> sınıflandırması: kamera görüşlerinin ve geç füzyonun etkisi.*
 > Yayımlanmamış çalışma.
 
 ---
@@ -25,19 +26,21 @@ ve sonuç dosyaları.
 
 - Dört kameranın **olasılık düzeyinde birleştirilmesi (geç füzyon)** en yüksek ham başarımı verdi:
   makro F1 **0,653**, doğruluk **0,835** (YOLO26n-cls).
-- Füzyonun en iyi tek kameraya göre kazancı YOLO26n-cls için istatistiksel olarak desteklendi,
-  YOLO11n-cls için desteklenmedi.
+- Füzyonun en iyi tek kameraya göre sağladığı kazanç YOLO26n-cls için istatistiksel olarak
+  anlamlı bulundu, YOLO11n-cls için anlamlı bulunmadı.
 - Kamera çiftleri arasındaki farklar yalnızca YOLO11n-cls ağırlıklarında anlamlı çıktı;
   belirli bir kamera görüşünün genel üstünlüğü gösterilemedi.
 - Füzyon, hesaplama yükünü ve toplam model boyutunu **dört katına** çıkarıyor
   (0,82 → 3,27 GFLOPs; A100 üzerinde 7,6 → 30,6 ms/oturum).
-- Yalnızca 29 oturumla temsil edilen **yan sürgün oluşumu (S2)** evresi hiçbir koşulda öğrenilemedi.
+- Yalnızca 29 oturumla temsil edilen **yan sürgün oluşumu (S2)** evresi hiçbir koşulda
+  güvenilir biçimde ayırt edilemedi.
 
 ![Görünüm ve modele göre makro F1](results/figures/F3_macroF1_by_view.png)
 
 ## Depo yapısı
 
 ```
+scripts/                      Ön eğitimli kontrol noktalarını karşılaştıran betik
 src/tomato_pipeline.py        Sekiz aşamalı pipeline (indeks → poz seçimi → görüntüler →
                               katlar → eğitim/test → OOF + füzyon → maliyet → analiz)
 notebooks/                    Colab sürücü defteri (denetim hücreleriyle)
@@ -68,14 +71,18 @@ karşılaştırmaları, karışıklık matrisleri, kamera çifti farkları, mali
 GPU olmadan, yalnızca depodaki dosyalarla yeniden üretilebilir:
 
 ```python
-import tomato_pipeline as tp
-cfg = tp.Config(drive_root='<deponun yolu>')
-tp.setup(cfg); tp.stage_analysis(cfg)
+# depo kökünden çalıştırılır
+from src import tomato_pipeline as tp
+
+cfg = tp.Config(drive_root="<deponun yolu>")
+tp.setup(cfg)
+tp.stage_analysis(cfg)
 ```
 
 Örnek görüntü içeren şekiller (evre örnekleri ve bir oturumun dört görünümü) kaynak görüntülere
 bağlı olduğundan, bunların üretilmesi için TomatoMAP görüntülerinin indirilmesi gerekir.
-Eğitilmiş kontrol noktaları (.pt) boyutları nedeniyle depoda paylaşılmamaktadır; koşu düzeyindeki
+Ön eğitimli kontrol noktalarının mimari karşılaştırması `scripts/compare_pretrained_checkpoints.py`
+betiğiyle yeniden üretilebilir. Eğitilmiş kontrol noktaları (.pt) boyutları nedeniyle depoda paylaşılmamaktadır; koşu düzeyindeki
 `args.yaml` dosyalarıyla birlikte talep üzerine iletilir. Depoda eğitim yapılandırması
 (`logs/config.json`), ortam kaydı (`logs/environment.json`) ve 40 koşunun epok bazındaki
 eğitim eğrileri bulunur.
@@ -109,8 +116,8 @@ Bu depoya atıf yapmak için:
 ```bibtex
 @misc{turan2026multiviewbbch,
   author = {Turan, Gökhan},
-  title  = {Çok görünümlü domates görüntülerinde derin öğrenme tabanlı büyüme evresi
-            sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti},
+  title  = {Derin öğrenme ile domates büyüme evresi sınıflandırması: kamera
+            görüşlerinin ve geç füzyonun etkisi},
   year   = {2026},
   note   = {Kod ve sonuç deposu},
   url    = {https://github.com/gokhanturan/tomato-multiview-bbch}

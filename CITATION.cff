@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "Bu depoyu kullanırsanız aşağıdaki gibi atıf yapınız."
-title: "Çok görünümlü domates görüntülerinde derin öğrenme tabanlı büyüme evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti"
+title: "Derin öğrenme ile domates büyüme evresi sınıflandırması: kamera görüşlerinin ve geç füzyonun etkisi"
 authors:
   - family-names: Turan
     given-names: Gökhan
