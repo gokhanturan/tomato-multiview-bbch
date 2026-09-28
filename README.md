@@ -1,4 +1,4 @@
-# Çok görünümlü domates görüntülerinde derin öğrenme tabanlı büyüme evresi sınıflandırması
+# Derin Öğrenme ile Domates Büyüme Evresi Sınıflandırması: Kamera Görüşlerinin ve Geç Füzyonun Etkisi
 
 Kamera görüşü, geç füzyon ve hesaplama maliyetinin, **TomatoMAP** veri seti üzerinde
 bitki düzeyinde gruplanmış çapraz doğrulama ile incelendiği çalışmanın kodu, manifestleri
