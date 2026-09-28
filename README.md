@@ -4,8 +4,7 @@ Kamera görüşü, geç füzyon ve hesaplama maliyetinin, **TomatoMAP** veri set
 bitki düzeyinde gruplanmış çapraz doğrulama ile incelendiği çalışmanın kodu, manifestleri
 ve sonuç dosyaları.
 
-> **İlgili çalışma:** Turan, G. (2026). *Çok görünümlü domates görüntülerinde derin öğrenme
-> tabanlı büyüme evresi sınıflandırması: kamera görüşü, geç füzyon ve hesaplama maliyeti.*
+> **İlgili çalışma:** Turan, G. (2026). *Derin Öğrenme ile Domates Büyüme Evresi Sınıflandırması: Kamera Görüşlerinin ve Geç Füzyonun Etkisi*
 > Yayımlanmamış çalışma.
 
 ---
